@@ -1,153 +1,138 @@
 <!DOCTYPE html>
-<html lang="ru" class="bg-white text-black dark:bg-gray-900 dark:text-white">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Портфолио — Александр</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-  <script>
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-  </style>
-</head>
-<body class="transition-colors duration-300">
-  <div class="container mx-auto p-4">
-    <div class="flex justify-between items-center mb-4">
-      <h1 class="text-2xl font-bold">Тест HTML</h1>
-      <button onclick="toggleTheme()" class="px-3 py-1 border rounded">🌓</button>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Test </title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <script>
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              inter: ['Inter', 'sans-serif']
+            },
+            colors: {
+              primary: '#80bc48',
+              darkbg: '#222a35',
+              darkfg: '#D6DCE5',
+              lightbg: '#f8fafc',
+              lightfg: '#0D0D0D',
+              accent1: '#333F50',
+              accent2: '#8497B0'
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' }
+              },
+              gradient: {
+                '0%': { backgroundPosition: '0% 50%' },
+                '50%': { backgroundPosition: '100% 50%' },
+                '100%': { backgroundPosition: '0% 50%' }
+              }
+            },
+            animation: {
+              fadeIn: 'fadeIn 0.5s ease-in-out',
+              gradient: 'gradient 15s ease infinite'
+            },
+            backgroundImage: {
+              darkgrad: 'linear-gradient(120deg, #0D0D0D, #222a35)',
+              lightgrad: 'linear-gradient(120deg, #ffffff, #d6dce5)'
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html {
+        transition: background 0.5s ease;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      html.dark body {
+        background-image: linear-gradient(120deg, #0D0D0D, #222a35);
+      }
+      html:not(.dark) body {
+        background-image: linear-gradient(120deg, #ffffff, #d6dce5);
+      }
+      .tab-btn {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .tab-btn.text-white {
+        color: white;
+      }
+      html:not(.dark) .tab-btn {
+        color: #0D0D0D;
+      }
+    </style>
+  </head>
+  <body class="dark:bg-darkbg bg-lightbg dark:text-darkfg text-lightfg transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 py-6">
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold">Александр — Дизайн-менеджер</h1>
+        <button id="toggleTheme" class="text-sm border rounded px-3 py-1">🌓</button>
+      </div>
+
+      <nav class="flex flex-wrap gap-2 mb-4 text-sm">
+        <button class="tab-btn px-3 py-2 rounded" data-tab="about">Обо мне</button>
+        <button class="tab-btn px-3 py-2 rounded" data-tab="experience">Опыт работы</button>
+        <button class="tab-btn px-3 py-2 rounded" data-tab="projects">Проекты и продукты</button>
+        <button class="tab-btn px-3 py-2 rounded" data-tab="education">Образование</button>
+        <button class="tab-btn px-3 py-2 rounded" data-tab="skills">Навыки</button>
+        <button class="tab-btn px-3 py-2 rounded" data-tab="contacts">Контакты</button>
+      </nav>
+
+      <div id="content" class="prose dark:prose-invert max-w-none text-sm transition-opacity duration-500 opacity-100 text-lightfg dark:text-darkfg"></div>
     </div>
 
-    <div class="tabs flex flex-wrap gap-2 mb-4">
-      <button class="tab-btn px-4 py-2 border rounded" onclick="showTab('about')">Обо мне</button>
-      <button class="tab-btn px-4 py-2 border rounded" onclick="showTab('experience')">Опыт работы</button>
-      <button class="tab-btn px-4 py-2 border rounded" onclick="showTab('projects')">Проекты и продукты</button>
-      <button class="tab-btn px-4 py-2 border rounded" onclick="showTab('education')">Образование</button>
-      <button class="tab-btn px-4 py-2 border rounded" onclick="showTab('skills')">Навыки</button>
-      <button class="tab-btn px-4 py-2 border rounded" onclick="showTab('contacts')">Контакты</button>
-    </div>
+    <script>
+      const tabs = {
+        about: `<h2>Привет, меня зовут Александр. Я дизайн-менеджер.</h2><p>Мой путь в IT начался в 2008 году...</p>`,
+        experience: `<h2>Опыт работы</h2><p>ГК Цифра, ООО «ИндаСофт», крупные проекты и достижения...</p>`,
+        projects: `<h2>Проекты и продукты</h2><p>Индустриальная дизайн-система Prizm, ZIIoT, Цифра.Мониторинг...</p>`,
+        education: `<h2>Образование</h2><p>Высшее: ИГХТУ. Курсы: Британская высшая школа дизайна, Сколково...</p>`,
+        skills: `<h2>Навыки</h2><ul><li>Дизайн-стратегия</li><li>Дизайн-системы</li><li>Юзабилити</li></ul>`,
+        contacts: `<h2>Контакты</h2><p>Telegram: <a href="https://t.me/ifmalex" target="_blank">@ifmalex</a></p>`
+      };
 
-    <div id="about" class="tab-content hidden whitespace-pre-line">
+      const contentEl = document.getElementById('content');
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      tabButtons.forEach(btn => {
+        btn.classList.add('bg-accent1');
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => b.classList.remove('bg-primary'));
+          tabButtons.forEach(b => b.classList.add('bg-accent1'));
+          btn.classList.remove('bg-accent1');
+          btn.classList.add('bg-primary');
+          const tab = btn.dataset.tab;
+          contentEl.classList.remove('opacity-100');
+          contentEl.classList.add('opacity-0');
+          setTimeout(() => {
+            contentEl.innerHTML = tabs[tab];
+            contentEl.classList.remove('opacity-0');
+            contentEl.classList.add('opacity-100');
+          }, 300);
+        });
+      });
+      document.querySelector('[data-tab="about"]').click();
 
-Мой путь в IT начался в 2008 году. В 2011 году, с хорошим опытом построения информационных систем (в роли разработчика), перешёл в дизайн.
-
-🔹Моя область работы — это пересечение дизайн-менеджмента, дизайна цифровых продуктов и цифрового брендинга. Чтобы продукты выглядели, работали и ощущались как единое целое, подхожу к их созданию комплексно. Это мой текущий ориентир в роли директора по дизайну группе компаний «Цифра». Сейчас сосредоточен как на стратегии, так и на реализации.
-
-🔹Мои ключевые компетенции:
-– Дизайн-менеджмент;
-– Дизайн-лидерство;
-– DesignOps;
-– Брендинг;
-– Дизайн-стратегия;
-– Дизайн-системы;
-– Дизайн цифровых продуктов;
-– UX-дизайн;
-– Информационная архитектура;
-– Юзабилити.
-
-• 3+ года опыта запуска и управления в сфере цифровых продуктов
-• Преподаю «Моделирование информационных систем» в ИГПУ
-• Успешный опыт создания с нуля отделов дизайна и визуализации
-• Управление отделом 15+ сотрудников
-• Создание автономной системы процессов
-• Эффективное развитие сотрудников
-• Опыт в цифровых HMI интерфейсах
-• Обоснование ценности решений для бизнеса
-• Переговоры с топ-менеджментом, презентации, конференции
-• NDA по ряду работ — доступны по запросу или на сайте компании
-• В промтехе с 2008 года
-• Участвую в трейлраннингах, ультрамарафонах, лыжных гонках
-    </div>
-
-    <div id="experience" class="tab-content hidden whitespace-pre-line">
-[Контент про опыт работы компании «Цифра» и «ИндаСофт» — полностью развёрнутый, с обязанностями, результатами, проектами, карьерным треком и краткими данными о компаниях.]
-    </div>
-
-    <div id="projects" class="tab-content hidden whitespace-pre-line">
-• Индустриальная дизайн-система Prizm
-• ZIIoT design system (1.0, 2.0, 3.0)
-• Zyfra Industrial IoT Platform (ZIIoT)
-• Цифра. Конструктор MES
-• Цифра. Лаборатория качества
-• Цифра. Балансы
-• Цифра. Промышленный технический мониторинг
-• Цифра. Карьер
-• Цифра. Советчик водителя самосвала 
-• Цифра. Умный ковш 
-• Единая цифровая платформа ПАО «Лукойл»
-• Система качества для «Газпром нефть»
-• Внедрение ZIIoT в крупных промышленных компаниях
-• Т Плюс. ИСУ и диспетчер сети (16 регионов России)
-• InduSoft Dispatch System
-• PANDA (Лукойл, ОАЭ, Ирак)
-• ЛИМС для Башнефти
-• I-EMS РУСАЛ
-• Советчик оператора, Сменный журнал, АРМ, Контроль режимов
-    </div>
-
-    <div id="education" class="tab-content hidden whitespace-pre-line">
-«Высшее образование»
-2011–2013 — Ивановский Государственный Химико-Технологический Университет
-Менеджмент организации / Бакалавр
-Диплом: «Управление проектом с использованием гибкой методологии»
-
-2005–2011 — Ивановский Государственный Химико-Технологический Университет
-Технология электрохимических производств / Специалист
-Диплом: «Гальванический цех машиностроительного завода»
-
-«Повышение квалификации, курсы»
-2025 — Брендинг цифровых продуктов (Bang bang education, Юрий Ветров)
-2023 — Цифровое нефтегазовое предприятие (Учебный центр по продуктам Цифры)
-2022 — Искусство презентации, Маркетинговая стратегия (Universal University)
-2021 — Product ownership, Коммуникации (Сколково)
-2020 — Управление персоналом (Школа менеджмента Цифра)
-2019 — Паттерны дизайн-менеджмента (Bang bang education)
-    </div>
-
-    <div id="skills" class="tab-content hidden whitespace-pre-line">
-– Дизайн-менеджмент
-– Дизайн-лидерство
-– DesignOps
-– Брендинг
-– Дизайн-стратегия
-– Дизайн-системы
-– Дизайн цифровых продуктов
-– UX-дизайн
-– Информационная архитектура
-– Юзабилити
-– Цифровые HMI интерфейсы
-– Презентации и коммуникации
-– Наставничество и развитие дизайнеров
-– Преподавание (UX, ИС)
-    </div>
-
-    <div id="contacts" class="tab-content hidden">
-      <p class="text-lg">
-        <a href="https://t.me/ifmalex" class="underline text-blue-600 dark:text-blue-400">t.me/ifmalex</a>
-      </p>
-    </div>
-  </div>
-
-  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.getElementById(tabId).classList.remove('hidden');
-    }
-
-    function toggleTheme() {
-      const html = document.documentElement;
-      html.classList.toggle('dark');
-      localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
-    }
-
-    // По умолчанию показываем первую вкладку
-    showTab('about');
-  </script>
-</body>
+      document.getElementById('toggleTheme').addEventListener('click', () => {
+        const html = document.documentElement;
+        const dark = html.classList.toggle('dark');
+        localStorage.theme = dark ? 'dark' : 'light';
+      });
+    </script>
+  </body>
 </html>
