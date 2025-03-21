@@ -13,8 +13,21 @@
             font-family: 'Inter', sans-serif;
         }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #80bc48 0%, #222a35 100%);
+        /* Новый фон */
+        .background {
+            background: url('https://images.unsplash.com/photo-1556740749-887f6717d7e4') center/cover no-repeat;
+            filter: blur(5px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
         }
 
         /* Анимации */
@@ -48,100 +61,106 @@
     </style>
 </head>
 
-<body class="gradient-bg text-white">
+<body class="bg-[#222a35] text-white">
 
-    <!-- Навигация -->
-    <header class="w-full p-6 flex justify-between items-center border-b border-[#333F50] sticky top-0 z-10 bg-[#222a35] shadow-md">
-        <h1 class="text-2xl font-bold">Мой Портфель</h1>
-        <nav>
-            <ul class="flex space-x-6">
-                <li><a href="#about" class="nav-link transition">Обо мне</a></li>
-                <li><a href="#experience" class="nav-link transition">Опыт работы</a></li>
-                <li><a href="#projects" class="nav-link transition">Проекты и продукты</a></li>
-                <li><a href="#education" class="nav-link transition">Образование</a></li>
-                <li><a href="#skills" class="nav-link transition">Навыки</a></li>
-                <li><a href="#contacts" class="nav-link transition">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Фон -->
+    <div class="background"></div>
 
-    <!-- Содержание -->
-    <main class="flex-1 p-8 space-y-16">
-        <!-- Обо мне -->
-        <section id="about" class="fadeIn">
-            <h2 class="text-4xl font-semibold mb-6">Обо мне</h2>
-            <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
-                <p>Здесь будет информация обо мне. Место для вашего рассказа о себе.</p>
-            </div>
-        </section>
+    <!-- Контент -->
+    <div class="content">
+        <!-- Навигация -->
+        <header class="w-full p-6 flex justify-between items-center border-b border-[#333F50] sticky top-0 z-10 bg-[#222a35] shadow-md">
+            <h1 class="text-2xl font-bold">Мой Портфель</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#about" class="nav-link transition">Обо мне</a></li>
+                    <li><a href="#experience" class="nav-link transition">Опыт работы</a></li>
+                    <li><a href="#projects" class="nav-link transition">Проекты и продукты</a></li>
+                    <li><a href="#education" class="nav-link transition">Образование</a></li>
+                    <li><a href="#skills" class="nav-link transition">Навыки</a></li>
+                    <li><a href="#contacts" class="nav-link transition">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <!-- Опыт работы -->
-        <section id="experience" class="fadeIn">
-            <h2 class="text-4xl font-semibold mb-6">Опыт работы</h2>
-            <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
-                <p>Здесь будет информация о моем опыте работы. Место для подробностей о ваших предыдущих должностях и проектах.</p>
-            </div>
-        </section>
-
-        <!-- Проекты и продукты -->
-        <section id="projects" class="fadeIn">
-            <h2 class="text-4xl font-semibold mb-6">Проекты и продукты</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
-                    <h3 class="text-2xl font-semibold mb-4">Проект 1</h3>
-                    <p>Описание проекта 1</p>
+        <!-- Содержание -->
+        <main class="flex-1 p-8 space-y-16">
+            <!-- Обо мне -->
+            <section id="about" class="fadeIn">
+                <h2 class="text-4xl font-semibold mb-6">Обо мне</h2>
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
+                    <p>Здесь будет информация обо мне. Место для вашего рассказа о себе.</p>
                 </div>
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
-                    <h3 class="text-2xl font-semibold mb-4">Проект 2</h3>
-                    <p>Описание проекта 2</p>
-                </div>
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
-                    <h3 class="text-2xl font-semibold mb-4">Проект 3</h3>
-                    <p>Описание проекта 3</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Образование -->
-        <section id="education" class="fadeIn">
-            <h2 class="text-4xl font-semibold mb-6">Образование</h2>
-            <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
-                <p>Здесь будет информация о моем образовании. Место для упоминания ваших учебных заведений и степеней.</p>
-            </div>
-        </section>
-
-        <!-- Навыки -->
-        <section id="skills" class="fadeIn">
-            <h2 class="text-4xl font-semibold mb-6">Навыки</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
-                    <h3 class="text-2xl font-semibold mb-4">Навык 1</h3>
-                    <p>Описание навыка 1</p>
+            <!-- Опыт работы -->
+            <section id="experience" class="fadeIn">
+                <h2 class="text-4xl font-semibold mb-6">Опыт работы</h2>
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
+                    <p>Здесь будет информация о моем опыте работы. Место для подробностей о ваших предыдущих должностях и проектах.</p>
                 </div>
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
-                    <h3 class="text-2xl font-semibold mb-4">Навык 2</h3>
-                    <p>Описание навыка 2</p>
-                </div>
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
-                    <h3 class="text-2xl font-semibold mb-4">Навык 3</h3>
-                    <p>Описание навыка 3</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Контакты -->
-        <section id="contacts" class="fadeIn">
-            <h2 class="text-4xl font-semibold mb-6">Контакты</h2>
-            <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
-                <p>Здесь будет информация о моих контактах. Ваши социальные сети, почта и другие способы связи.</p>
-            </div>
-        </section>
-    </main>
+            <!-- Проекты и продукты -->
+            <section id="projects" class="fadeIn">
+                <h2 class="text-4xl font-semibold mb-6">Проекты и продукты</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
+                        <h3 class="text-2xl font-semibold mb-4">Проект 1</h3>
+                        <p>Описание проекта 1</p>
+                    </div>
+                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
+                        <h3 class="text-2xl font-semibold mb-4">Проект 2</h3>
+                        <p>Описание проекта 2</p>
+                    </div>
+                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
+                        <h3 class="text-2xl font-semibold mb-4">Проект 3</h3>
+                        <p>Описание проекта 3</p>
+                    </div>
+                </div>
+            </section>
 
-    <!-- Футер -->
-    <footer class="bg-[#0D0D0D] text-center p-6 mt-16">
-        <p>&copy; 2025 Мой Портфель. Все права защищены.</p>
-    </footer>
+            <!-- Образование -->
+            <section id="education" class="fadeIn">
+                <h2 class="text-4xl font-semibold mb-6">Образование</h2>
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
+                    <p>Здесь будет информация о моем образовании. Место для упоминания ваших учебных заведений и степеней.</p>
+                </div>
+            </section>
+
+            <!-- Навыки -->
+            <section id="skills" class="fadeIn">
+                <h2 class="text-4xl font-semibold mb-6">Навыки</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
+                        <h3 class="text-2xl font-semibold mb-4">Навык 1</h3>
+                        <p>Описание навыка 1</p>
+                    </div>
+                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
+                        <h3 class="text-2xl font-semibold mb-4">Навык 2</h3>
+                        <p>Описание навыка 2</p>
+                    </div>
+                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
+                        <h3 class="text-2xl font-semibold mb-4">Навык 3</h3>
+                        <p>Описание навыка 3</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Контакты -->
+            <section id="contacts" class="fadeIn">
+                <h2 class="text-4xl font-semibold mb-6">Контакты</h2>
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
+                    <p>Здесь будет информация о моих контактах. Ваши социальные сети, почта и другие способы связи.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Футер -->
+        <footer class="bg-[#0D0D0D] text-center p-6 mt-16">
+            <p>&copy; 2025 Мой Портфель. Все права защищены.</p>
+        </footer>
+    </div>
 
 </body>
 
