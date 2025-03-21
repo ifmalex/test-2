@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Test </title>
+    <title> Оппа </title>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
     <script>
       if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -67,15 +67,6 @@
       html:not(.dark) body {
         background-image: linear-gradient(120deg, #ffffff, #d6dce5);
       }
-      .tab-btn {
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-      .tab-btn.text-white {
-        color: white;
-      }
-      html:not(.dark) .tab-btn {
-        color: #0D0D0D;
-      }
     </style>
   </head>
   <body class="dark:bg-darkbg bg-lightbg dark:text-darkfg text-lightfg transition-colors duration-300">
@@ -86,15 +77,15 @@
       </div>
 
       <nav class="flex flex-wrap gap-2 mb-4 text-sm">
-        <button class="tab-btn px-3 py-2 rounded" data-tab="about">Обо мне</button>
-        <button class="tab-btn px-3 py-2 rounded" data-tab="experience">Опыт работы</button>
-        <button class="tab-btn px-3 py-2 rounded" data-tab="projects">Проекты и продукты</button>
-        <button class="tab-btn px-3 py-2 rounded" data-tab="education">Образование</button>
-        <button class="tab-btn px-3 py-2 rounded" data-tab="skills">Навыки</button>
-        <button class="tab-btn px-3 py-2 rounded" data-tab="contacts">Контакты</button>
+        <button class="tab-btn px-3 py-2 rounded text-white" data-tab="about">Обо мне</button>
+        <button class="tab-btn px-3 py-2 rounded text-white" data-tab="experience">Опыт работы</button>
+        <button class="tab-btn px-3 py-2 rounded text-white" data-tab="projects">Проекты и продукты</button>
+        <button class="tab-btn px-3 py-2 rounded text-white" data-tab="education">Образование</button>
+        <button class="tab-btn px-3 py-2 rounded text-white" data-tab="skills">Навыки</button>
+        <button class="tab-btn px-3 py-2 rounded text-white" data-tab="contacts">Контакты</button>
       </nav>
 
-      <div id="content" class="prose dark:prose-invert max-w-none text-sm transition-opacity duration-500 opacity-100 text-lightfg dark:text-darkfg"></div>
+      <div id="content" class="prose max-w-none text-sm transition-opacity duration-500 opacity-100 text-lightfg dark:text-darkfg"></div>
     </div>
 
     <script>
@@ -110,7 +101,6 @@
       const contentEl = document.getElementById('content');
       const tabButtons = document.querySelectorAll('.tab-btn');
       tabButtons.forEach(btn => {
-        btn.classList.add('bg-accent1');
         btn.addEventListener('click', () => {
           tabButtons.forEach(b => b.classList.remove('bg-primary'));
           tabButtons.forEach(b => b.classList.add('bg-accent1'));
