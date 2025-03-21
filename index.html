@@ -1,104 +1,93 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Александр — Портфолио</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Портфель</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              inter: ['Inter', 'sans-serif']
-            },
-            colors: {
-              primary: '#80bc48',
-              bg: '#222a35',
-              fg: '#D6DCE5',
-              accent1: '#333F50',
-              accent2: '#8497B0'
-            },
-            keyframes: {
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' }
-              },
-              gradient: {
-                '0%': { backgroundPosition: '0% 50%' },
-                '50%': { backgroundPosition: '100% 50%' },
-                '100%': { backgroundPosition: '0% 50%' }
-              }
-            },
-            animation: {
-              fadeIn: 'fadeIn 0.5s ease-in-out',
-              gradient: 'gradient 15s ease infinite'
-            },
-            backgroundImage: {
-              grad: 'linear-gradient(120deg, #0D0D0D, #222a35)'
-            }
-          }
-        }
-      }
-    </script>
     <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
-        background-image: linear-gradient(120deg, #0D0D0D, #222a35);
-        color: #D6DCE5;
-      }
+        /* Дополнительные стили */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
     </style>
-  </head>
-  <body class="bg-bg text-fg transition-colors duration-300">
-    <div class="max-w-4xl mx-auto px-4 py-6">
-      <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold">Александр — Дизайн-менеджер</h1>
-      </div>
+</head>
 
-      <nav class="flex flex-wrap gap-2 mb-4 text-sm">
-        <button class="tab-btn px-3 py-2 rounded text-fg" data-tab="about">Обо мне</button>
-        <button class="tab-btn px-3 py-2 rounded text-fg" data-tab="experience">Опыт работы</button>
-        <button class="tab-btn px-3 py-2 rounded text-fg" data-tab="projects">Проекты и продукты</button>
-        <button class="tab-btn px-3 py-2 rounded text-fg" data-tab="education">Образование</button>
-        <button class="tab-btn px-3 py-2 rounded text-fg" data-tab="skills">Навыки</button>
-        <button class="tab-btn px-3 py-2 rounded text-fg" data-tab="contacts">Контакты</button>
-      </nav>
+<body class="bg-gradient-to-r from-[#80bc48] to-[#222a35] text-white">
+    <div class="min-h-screen flex flex-col">
+        <!-- Навигация -->
+        <header class="w-full p-6 flex justify-between items-center border-b border-[#333F50]">
+            <h1 class="text-2xl font-bold">Мой Портфель</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#about" class="hover:text-[#D6DCE5] transition">Обо мне</a></li>
+                    <li><a href="#experience" class="hover:text-[#D6DCE5] transition">Опыт работы</a></li>
+                    <li><a href="#projects" class="hover:text-[#D6DCE5] transition">Проекты и продукты</a></li>
+                    <li><a href="#education" class="hover:text-[#D6DCE5] transition">Образование</a></li>
+                    <li><a href="#skills" class="hover:text-[#D6DCE5] transition">Навыки</a></li>
+                    <li><a href="#contacts" class="hover:text-[#D6DCE5] transition">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
 
-      <div id="content" class="prose max-w-none text-sm transition-opacity duration-500 opacity-100 text-fg"></div>
+        <!-- Содержание -->
+        <main class="flex-1 p-6">
+            <!-- Обо мне -->
+            <section id="about" class="mb-16">
+                <h2 class="text-3xl font-semibold mb-4">Обо мне</h2>
+                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
+                    <p>Здесь будет информация обо мне.</p>
+                </div>
+            </section>
+
+            <!-- Опыт работы -->
+            <section id="experience" class="mb-16">
+                <h2 class="text-3xl font-semibold mb-4">Опыт работы</h2>
+                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
+                    <p>Здесь будет информация о моем опыте работы.</p>
+                </div>
+            </section>
+
+            <!-- Проекты и продукты -->
+            <section id="projects" class="mb-16">
+                <h2 class="text-3xl font-semibold mb-4">Проекты и продукты</h2>
+                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
+                    <p>Здесь будет информация о моих проектах и продуктах.</p>
+                </div>
+            </section>
+
+            <!-- Образование -->
+            <section id="education" class="mb-16">
+                <h2 class="text-3xl font-semibold mb-4">Образование</h2>
+                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
+                    <p>Здесь будет информация о моем образовании.</p>
+                </div>
+            </section>
+
+            <!-- Навыки -->
+            <section id="skills" class="mb-16">
+                <h2 class="text-3xl font-semibold mb-4">Навыки</h2>
+                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
+                    <p>Здесь будет информация о моих навыках.</p>
+                </div>
+            </section>
+
+            <!-- Контакты -->
+            <section id="contacts">
+                <h2 class="text-3xl font-semibold mb-4">Контакты</h2>
+                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
+                    <p>Здесь будет информация о моих контактах.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Футер -->
+        <footer class="bg-[#0D0D0D] text-center p-6">
+            <p>&copy; 2025 Мой Портфель. Все права защищены.</p>
+        </footer>
     </div>
+</body>
 
-    <script>
-      const tabs = {
-        about: `<h2>Привет, меня зовут Александр. Я дизайн-менеджер.</h2><p>Мой путь в IT начался в 2008 году...</p>`,
-        experience: `<h2>Опыт работы</h2><p>ГК Цифра, ООО «ИндаСофт», крупные проекты и достижения...</p>`,
-        projects: `<h2>Проекты и продукты</h2><p>Индустриальная дизайн-система Prizm, ZIIoT, Цифра.Мониторинг...</p>`,
-        education: `<h2>Образование</h2><p>Высшее: ИГХТУ. Курсы: Британская высшая школа дизайна, Сколково...</p>`,
-        skills: `<h2>Навыки</h2><ul><li>Дизайн-стратегия</li><li>Дизайн-системы</li><li>Юзабилити</li></ul>`,
-        contacts: `<h2>Контакты</h2><p>Telegram: <a href="https://t.me/ifmalex" target="_blank">@ifmalex</a></p>`
-      };
-
-      const contentEl = document.getElementById('content');
-      const tabButtons = document.querySelectorAll('.tab-btn');
-      tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          tabButtons.forEach(b => b.classList.remove('bg-primary'));
-          tabButtons.forEach(b => b.classList.add('bg-accent1'));
-          btn.classList.remove('bg-accent1');
-          btn.classList.add('bg-primary');
-          const tab = btn.dataset.tab;
-          contentEl.classList.remove('opacity-100');
-          contentEl.classList.add('opacity-0');
-          setTimeout(() => {
-            contentEl.innerHTML = tabs[tab];
-            contentEl.classList.remove('opacity-0');
-            contentEl.classList.add('opacity-100');
-          }, 300);
-        });
-      });
-      document.querySelector('[data-tab="about"]').click();
-    </script>
-  </body>
 </html>
