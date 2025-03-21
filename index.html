@@ -12,82 +12,137 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #80bc48 0%, #222a35 100%);
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fadeIn {
+            animation: fadeIn 0.7s ease-in-out;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .hover-opacity:hover {
+            opacity: 0.8;
+        }
+
+        .nav-link:hover {
+            color: #D6DCE5;
+        }
     </style>
 </head>
 
-<body class="bg-gradient-to-r from-[#80bc48] to-[#222a35] text-white">
-    <div class="min-h-screen flex flex-col">
-        <!-- Навигация -->
-        <header class="w-full p-6 flex justify-between items-center border-b border-[#333F50]">
-            <h1 class="text-2xl font-bold">Мой Портфель</h1>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#about" class="hover:text-[#D6DCE5] transition">Обо мне</a></li>
-                    <li><a href="#experience" class="hover:text-[#D6DCE5] transition">Опыт работы</a></li>
-                    <li><a href="#projects" class="hover:text-[#D6DCE5] transition">Проекты и продукты</a></li>
-                    <li><a href="#education" class="hover:text-[#D6DCE5] transition">Образование</a></li>
-                    <li><a href="#skills" class="hover:text-[#D6DCE5] transition">Навыки</a></li>
-                    <li><a href="#contacts" class="hover:text-[#D6DCE5] transition">Контакты</a></li>
-                </ul>
-            </nav>
-        </header>
+<body class="gradient-bg text-white">
 
-        <!-- Содержание -->
-        <main class="flex-1 p-6">
-            <!-- Обо мне -->
-            <section id="about" class="mb-16">
-                <h2 class="text-3xl font-semibold mb-4">Обо мне</h2>
-                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
-                    <p>Здесь будет информация обо мне.</p>
+    <!-- Навигация -->
+    <header class="w-full p-6 flex justify-between items-center border-b border-[#333F50] sticky top-0 z-10 bg-[#222a35] shadow-md">
+        <h1 class="text-2xl font-bold">Мой Портфель</h1>
+        <nav>
+            <ul class="flex space-x-6">
+                <li><a href="#about" class="nav-link transition">Обо мне</a></li>
+                <li><a href="#experience" class="nav-link transition">Опыт работы</a></li>
+                <li><a href="#projects" class="nav-link transition">Проекты и продукты</a></li>
+                <li><a href="#education" class="nav-link transition">Образование</a></li>
+                <li><a href="#skills" class="nav-link transition">Навыки</a></li>
+                <li><a href="#contacts" class="nav-link transition">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Содержание -->
+    <main class="flex-1 p-8 space-y-16">
+        <!-- Обо мне -->
+        <section id="about" class="fadeIn">
+            <h2 class="text-4xl font-semibold mb-6">Обо мне</h2>
+            <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
+                <p>Здесь будет информация обо мне. Место для вашего рассказа о себе.</p>
+            </div>
+        </section>
+
+        <!-- Опыт работы -->
+        <section id="experience" class="fadeIn">
+            <h2 class="text-4xl font-semibold mb-6">Опыт работы</h2>
+            <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
+                <p>Здесь будет информация о моем опыте работы. Место для подробностей о ваших предыдущих должностях и проектах.</p>
+            </div>
+        </section>
+
+        <!-- Проекты и продукты -->
+        <section id="projects" class="fadeIn">
+            <h2 class="text-4xl font-semibold mb-6">Проекты и продукты</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
+                    <h3 class="text-2xl font-semibold mb-4">Проект 1</h3>
+                    <p>Описание проекта 1</p>
                 </div>
-            </section>
-
-            <!-- Опыт работы -->
-            <section id="experience" class="mb-16">
-                <h2 class="text-3xl font-semibold mb-4">Опыт работы</h2>
-                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
-                    <p>Здесь будет информация о моем опыте работы.</p>
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
+                    <h3 class="text-2xl font-semibold mb-4">Проект 2</h3>
+                    <p>Описание проекта 2</p>
                 </div>
-            </section>
-
-            <!-- Проекты и продукты -->
-            <section id="projects" class="mb-16">
-                <h2 class="text-3xl font-semibold mb-4">Проекты и продукты</h2>
-                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
-                    <p>Здесь будет информация о моих проектах и продуктах.</p>
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
+                    <h3 class="text-2xl font-semibold mb-4">Проект 3</h3>
+                    <p>Описание проекта 3</p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Образование -->
-            <section id="education" class="mb-16">
-                <h2 class="text-3xl font-semibold mb-4">Образование</h2>
-                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
-                    <p>Здесь будет информация о моем образовании.</p>
+        <!-- Образование -->
+        <section id="education" class="fadeIn">
+            <h2 class="text-4xl font-semibold mb-6">Образование</h2>
+            <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
+                <p>Здесь будет информация о моем образовании. Место для упоминания ваших учебных заведений и степеней.</p>
+            </div>
+        </section>
+
+        <!-- Навыки -->
+        <section id="skills" class="fadeIn">
+            <h2 class="text-4xl font-semibold mb-6">Навыки</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
+                    <h3 class="text-2xl font-semibold mb-4">Навык 1</h3>
+                    <p>Описание навыка 1</p>
                 </div>
-            </section>
-
-            <!-- Навыки -->
-            <section id="skills" class="mb-16">
-                <h2 class="text-3xl font-semibold mb-4">Навыки</h2>
-                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
-                    <p>Здесь будет информация о моих навыках.</p>
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
+                    <h3 class="text-2xl font-semibold mb-4">Навык 2</h3>
+                    <p>Описание навыка 2</p>
                 </div>
-            </section>
-
-            <!-- Контакты -->
-            <section id="contacts">
-                <h2 class="text-3xl font-semibold mb-4">Контакты</h2>
-                <div class="bg-[#333F50] p-6 rounded-lg shadow-lg">
-                    <p>Здесь будет информация о моих контактах.</p>
+                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
+                    <h3 class="text-2xl font-semibold mb-4">Навык 3</h3>
+                    <p>Описание навыка 3</p>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
 
-        <!-- Футер -->
-        <footer class="bg-[#0D0D0D] text-center p-6">
-            <p>&copy; 2025 Мой Портфель. Все права защищены.</p>
-        </footer>
-    </div>
+        <!-- Контакты -->
+        <section id="contacts" class="fadeIn">
+            <h2 class="text-4xl font-semibold mb-6">Контакты</h2>
+            <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
+                <p>Здесь будет информация о моих контактах. Ваши социальные сети, почта и другие способы связи.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer class="bg-[#0D0D0D] text-center p-6 mt-16">
+        <p>&copy; 2025 Мой Портфель. Все права защищены.</p>
+    </footer>
+
 </body>
 
 </html>
