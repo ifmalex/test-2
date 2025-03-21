@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Моё Портфолио</title>
+  <script>
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0f172a',
+            secondary: '#1e293b',
+            accent: '#3b82f6',
+            light: '#f8fafc',
+            dark: '#0f172a'
+          },
+          fontFamily: {
+            sans: ['"Inter UI"', 'Inter', 'sans-serif'],
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.5s ease-out both',
+            slideUp: 'slideUp 0.4s ease-out both'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0, transform: 'translateY(10px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
+            },
+            slideUp: {
+              '0%': { opacity: 0, transform: 'translateY(20px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="font-sans bg-light text-primary dark:bg-dark dark:text-light transition-colors duration-300">
+  <div class="max-w-4xl mx-auto p-6 animate-fadeIn">
+    <!-- Контент страницы будет подставлен здесь -->
+  </div>
+</body>
+</html>
