@@ -1,168 +1,108 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Портфель</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Дополнительные стили */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Новый индустриальный фон */
-        .background {
-            background: url('https://images.unsplash.com/photo-1575155071916-8d33a88c1de3') center/cover no-repeat;
-            filter: blur(8px);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-size: cover;
-        }
-
-        .content {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Анимации */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fadeIn {
-            animation: fadeIn 0.7s ease-in-out;
-        }
-
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
-
-        .hover-opacity:hover {
-            opacity: 0.8;
-        }
-
-        .nav-link:hover {
-            color: #D6DCE5;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Александр С. Марков — Портфолио</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            fade: 'fadeIn 1s ease-in-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 },
+            },
+          },
+        },
+      },
+      darkMode: 'class'
+    }
+  </script>
 </head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white font-sans">
+  <div class="max-w-4xl mx-auto px-4 py-10 animate-fade">
+    <!-- Навигация -->
+    <nav class="flex justify-between items-center mb-8 text-sm text-gray-700 dark:text-gray-300 sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur p-4 rounded-lg shadow-md z-10">
+      <div class="font-bold">Александр С. Марков</div>
+      <div class="space-x-4">
+        <a href="#about" class="hover:underline">Обо мне</a>
+        <a href="#experience" class="hover:underline">Опыт</a>
+        <a href="#projects" class="hover:underline">Проекты</a>
+        <a href="#education" class="hover:underline">Образование</a>
+        <a href="#skills" class="hover:underline">Интересы</a>
+        <button onclick="document.documentElement.classList.toggle('dark')" class="hover:underline">🌓</button>
+      </div>
+    </nav>
 
-<body class="bg-[#222a35] text-white">
+    <!-- О себе -->
+    <header id="about" class="mb-10 scroll-mt-20">
+      <h1 class="text-3xl font-bold">Александр С. Марков</h1>
+      <p class="text-lg">Дизайн-директор / Chief Design Officer</p>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+        📍 +7 (920) 678-80-22 · ✉️ <a href="mailto:ifmalex@gmail.com" class="underline">ifmalex@gmail.com</a> · <a href="https://t.me/ifmalex" class="underline">@ifmalex</a>
+      </p>
+    </header>
 
-    <!-- Фон -->
-    <div class="background"></div>
+    <!-- Опыт работы -->
+    <section id="experience" class="mb-10 scroll-mt-20">
+      <h2 class="text-2xl font-semibold mb-4">Опыт работы</h2>
+      <div class="mb-6">
+        <h3 class="text-xl font-semibold">ГК «Цифра» — Chief Design Officer (с 2022)</h3>
+        <ul class="list-disc list-inside mt-2 text-sm space-y-1">
+          <li>Построение дизайн-процессов и культуры компании</li>
+          <li>Запуск и развитие дизайн-системы Prizm</li>
+          <li>Сокращение сроков запуска продуктов на 40%</li>
+          <li>Формирование и развитие команды дизайнеров</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold">ООО «ИндаСофт» — Ведущий инженер-проектировщик UI (2008–2018)</h3>
+        <ul class="list-disc list-inside mt-2 text-sm space-y-1">
+          <li>Создание библиотеки компонентов и стандартов UI</li>
+          <li>UX-исследования и внедрение пользовательских интерфейсов</li>
+          <li>Обучение сотрудников и развитие внутренних курсов</li>
+        </ul>
+      </div>
+    </section>
 
-    <!-- Контент -->
-    <div class="content">
-        <!-- Навигация -->
-        <header class="w-full p-6 flex justify-between items-center border-b border-[#333F50] sticky top-0 z-10 bg-[#222a35] shadow-md">
-            <h1 class="text-2xl font-bold">Мой Портфель</h1>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#about" class="nav-link transition">Обо мне</a></li>
-                    <li><a href="#experience" class="nav-link transition">Опыт работы</a></li>
-                    <li><a href="#projects" class="nav-link transition">Проекты и продукты</a></li>
-                    <li><a href="#education" class="nav-link transition">Образование</a></li>
-                    <li><a href="#skills" class="nav-link transition">Навыки</a></li>
-                    <li><a href="#contacts" class="nav-link transition">Контакты</a></li>
-                </ul>
-            </nav>
-        </header>
+    <!-- Проекты -->
+    <section id="projects" class="mb-10 scroll-mt-20">
+      <h2 class="text-2xl font-semibold mb-4">Ключевые проекты</h2>
+      <ul class="list-disc list-inside text-sm space-y-1">
+        <li>Prizm — индустриальная дизайн-система</li>
+        <li>Zyfra Industrial Internet Of Things Platform (ZIIoT)</li>
+        <li>Цифровая платформа ПАО «Лукойл», системы для «Газпром нефть»</li>
+        <li>VG Work&Safety Management, Zyfra Quality Lab</li>
+      </ul>
+    </section>
 
-        <!-- Содержание -->
-        <main class="flex-1 p-8 space-y-16">
-            <!-- Обо мне -->
-            <section id="about" class="fadeIn">
-                <h2 class="text-4xl font-semibold mb-6">Обо мне</h2>
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
-                    <p>Здесь будет информация обо мне. Место для вашего рассказа о себе.</p>
-                </div>
-            </section>
+    <!-- Образование и курсы -->
+    <section id="education" class="mb-10 scroll-mt-20">
+      <h2 class="text-2xl font-semibold mb-4">Образование и курсы</h2>
+      <p class="text-sm mb-2">ИГХТУ (2011–2013) — Менеджмент организации</p>
+      <p class="text-sm mb-2">ИГХТУ (2005–2011) — Технология электрохимических производств</p>
+      <p class="text-sm">Британская высшая школа дизайна, Сколково, Universal University, Нетология и др.</p>
+    </section>
 
-            <!-- Опыт работы -->
-            <section id="experience" class="fadeIn">
-                <h2 class="text-4xl font-semibold mb-6">Опыт работы</h2>
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
-                    <p>Здесь будет информация о моем опыте работы. Место для подробностей о ваших предыдущих должностях и проектах.</p>
-                </div>
-            </section>
-
-            <!-- Проекты и продукты -->
-            <section id="projects" class="fadeIn">
-                <h2 class="text-4xl font-semibold mb-6">Проекты и продукты</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
-                        <h3 class="text-2xl font-semibold mb-4">Проект 1</h3>
-                        <p>Описание проекта 1</p>
-                    </div>
-                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
-                        <h3 class="text-2xl font-semibold mb-4">Проект 2</h3>
-                        <p>Описание проекта 2</p>
-                    </div>
-                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-scale transition">
-                        <h3 class="text-2xl font-semibold mb-4">Проект 3</h3>
-                        <p>Описание проекта 3</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Образование -->
-            <section id="education" class="fadeIn">
-                <h2 class="text-4xl font-semibold mb-6">Образование</h2>
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
-                    <p>Здесь будет информация о моем образовании. Место для упоминания ваших учебных заведений и степеней.</p>
-                </div>
-            </section>
-
-            <!-- Навыки -->
-            <section id="skills" class="fadeIn">
-                <h2 class="text-4xl font-semibold mb-6">Навыки</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
-                        <h3 class="text-2xl font-semibold mb-4">Навык 1</h3>
-                        <p>Описание навыка 1</p>
-                    </div>
-                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
-                        <h3 class="text-2xl font-semibold mb-4">Навык 2</h3>
-                        <p>Описание навыка 2</p>
-                    </div>
-                    <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl hover-opacity transition">
-                        <h3 class="text-2xl font-semibold mb-4">Навык 3</h3>
-                        <p>Описание навыка 3</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Контакты -->
-            <section id="contacts" class="fadeIn">
-                <h2 class="text-4xl font-semibold mb-6">Контакты</h2>
-                <div class="bg-[#333F50] p-8 rounded-2xl shadow-xl">
-                    <p>Здесь будет информация о моих контактах. Ваши социальные сети, почта и другие способы связи.</p>
-                </div>
-            </section>
-        </main>
-
-        <!-- Футер -->
-        <footer class="bg-[#0D0D0D] text-center p-6 mt-16">
-            <p>&copy; 2025 Мой Портфель. Все права защищены.</p>
-        </footer>
-    </div>
-
+    <!-- Навыки и интересы -->
+    <section id="skills" class="scroll-mt-20">
+      <h2 class="text-2xl font-semibold mb-4">Обо мне</h2>
+      <ul class="list-disc list-inside text-sm space-y-1">
+        <li>Опыт управления командами 15+ человек</li>
+        <li>Экспертиза в цифровых HMI-интерфейсах</li>
+        <li>Преподавание в ИвГПУ, участие в беговых стартах и трейлраннингах</li>
+        <li>Люблю дизайн, системы и золотистых ретриверов 🐶</li>
+      </ul>
+    </section>
+  </div>
 </body>
-
 </html>
