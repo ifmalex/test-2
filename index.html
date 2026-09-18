@@ -1,136 +1,304 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Александр С. Марков — Портфолио</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-          animation: {
-            fade: 'fadeIn 1s ease-in-out',
-          },
-          keyframes: {
-            fadeIn: {
-              '0%': { opacity: 0 },
-              '100%': { opacity: 1 },
-            },
-          },
-        },
-      },
-      darkMode: 'class'
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Александр С. Марков — дизайн-директор и Chief Design Officer. Продуктовый дизайн, дизайн-системы и управление командами.">
+  <meta name="theme-color" content="#0b0d10">
+  <title>Александр Марков — Design Director</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --surface: #12161b;
+      --surface-2: #171c22;
+      --text: #f3f5f7;
+      --muted: #9ca7b4;
+      --line: rgba(255,255,255,.1);
+      --accent: #c7ff4a;
+      --accent-ink: #101508;
+      --max: 1180px;
     }
-  </script>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 85% 2%, rgba(199,255,74,.13), transparent 27rem),
+        var(--bg);
+      color: var(--text);
+      font-family: "Manrope", system-ui, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(11,13,16,.82);
+      backdrop-filter: blur(16px);
+    }
+    .nav-inner {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand { text-decoration: none; font-weight: 800; letter-spacing: -.04em; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+    .contact-link {
+      padding: 10px 16px; border: 1px solid var(--line);
+      border-radius: 999px; color: var(--text) !important;
+    }
+    .hero { min-height: calc(100vh - 72px); display: grid; align-items: center; padding: 80px 0; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--accent); font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .12em;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    h1 {
+      max-width: 980px; margin: 24px 0;
+      font-size: clamp(48px, 8vw, 104px); line-height: .96;
+      letter-spacing: -.065em; font-weight: 800;
+    }
+    .hero-copy {
+      max-width: 760px; margin: 0; color: var(--muted);
+      font-size: clamp(18px, 2vw, 24px); line-height: 1.45;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 50px; padding: 0 22px; border-radius: 12px;
+      text-decoration: none; font-weight: 700; border: 1px solid var(--line);
+    }
+    .button-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+    .button-secondary:hover { background: var(--surface-2); }
+    .metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      margin-top: 72px; border-top: 1px solid var(--line);
+    }
+    .metric { padding: 26px 28px 0 0; }
+    .metric strong { display: block; font-size: clamp(32px, 4vw, 52px); letter-spacing: -.05em; line-height: 1; }
+    .metric span { display: block; color: var(--muted); font-size: 14px; margin-top: 10px; }
+    section { padding: 110px 0; border-top: 1px solid var(--line); scroll-margin-top: 72px; }
+    .section-head {
+      display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 48px;
+    }
+    .section-kicker { color: var(--accent); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
+    h2 { margin: 0; font-size: clamp(34px, 5vw, 62px); line-height: 1.08; letter-spacing: -.05em; }
+    .lead { color: var(--muted); font-size: 19px; max-width: 760px; margin: 22px 0 0; }
+    .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .case {
+      min-height: 320px; padding: 32px; border: 1px solid var(--line);
+      border-radius: 20px; background: linear-gradient(145deg, var(--surface-2), var(--surface));
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+    .case:hover { transform: translateY(-4px); border-color: rgba(199,255,74,.5); }
+    .case-number { color: var(--muted); font-size: 13px; }
+    .case h3 { margin: 32px 0 10px; font-size: 28px; letter-spacing: -.035em; line-height: 1.15; }
+    .case p { color: var(--muted); margin: 0; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .tag { padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 12px; }
+    .experience { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+    .role {
+      padding: 0 0 56px; margin-bottom: 56px; border-bottom: 1px solid var(--line);
+    }
+    .role:last-child { margin: 0; padding: 0; border: 0; }
+    .role-meta { color: var(--accent); font-size: 14px; font-weight: 700; }
+    .role h3 { font-size: 30px; letter-spacing: -.04em; margin: 10px 0 24px; }
+    .role ul { padding: 0; margin: 0; list-style: none; display: grid; gap: 14px; color: var(--muted); }
+    .role li { padding-left: 22px; position: relative; }
+    .role li::before { content: "↗"; color: var(--accent); position: absolute; left: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; }
+    .panel h3 { font-size: 22px; margin: 0 0 20px; }
+    .panel p, .panel li { color: var(--muted); }
+    .panel ul { margin: 0; padding-left: 18px; display: grid; gap: 10px; }
+    footer { padding: 88px 0 32px; border-top: 1px solid var(--line); }
+    .footer-cta { display: flex; justify-content: space-between; align-items: end; gap: 28px; }
+    .footer-cta h2 { max-width: 760px; }
+    .footer-links { display: flex; gap: 16px; margin-top: 38px; flex-wrap: wrap; }
+    .footer-note { color: var(--muted); font-size: 13px; margin-top: 72px; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .nav-inner { min-height: 64px; }
+      .nav-links a:not(.contact-link) { display: none; }
+      .hero { min-height: auto; padding: 72px 0; }
+      .metrics, .case-grid, .section-head, .experience, .about-grid { grid-template-columns: 1fr; }
+      .metrics { gap: 22px; }
+      .metric { padding-top: 20px; }
+      section { padding: 76px 0; }
+      .section-head { gap: 16px; }
+      .experience { gap: 28px; }
+      .case { min-height: 280px; padding: 26px; }
+      .footer-cta { display: block; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
 </head>
-<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white font-sans">
-  <div class="max-w-4xl mx-auto px-4 py-10 animate-fade">
-    <!-- Навигация -->
-    <nav class="flex justify-between items-center mb-8 text-sm text-gray-700 dark:text-gray-300 sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur p-4 rounded-lg shadow-md z-10">
-      <div class="font-bold">Александр С. Марков</div>
-      <div class="space-x-4">
-        <a href="#about" class="hover:underline">Обо мне</a>
-        <a href="#experience" class="hover:underline">Опыт</a>
-        <a href="#projects" class="hover:underline">Проекты</a>
-        <a href="#education" class="hover:underline">Образование</a>
-        <a href="#skills" class="hover:underline">Интересы</a>
-        <button onclick="document.documentElement.classList.toggle('dark')" class="hover:underline">🌓</button>
+<body>
+  <nav class="nav" aria-label="Основная навигация">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Александр Марков</a>
+      <div class="nav-links">
+        <a href="#projects">Проекты</a>
+        <a href="#experience">Опыт</a>
+        <a href="#about">Обо мне</a>
+        <a class="contact-link" href="mailto:ifmalex@gmail.com">Связаться</a>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- О себе -->
-    <header id="about" class="mb-10 scroll-mt-20">
-      <h1 class="text-3xl font-bold">Александр С. Марков</h1>
-      <p class="text-lg">Дизайн-директор / Chief Design Officer</p>
-      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-        📍 +7 (920) 678-80-22 · ✉️ <a href="mailto:ifmalex@gmail.com" class="underline">ifmalex@gmail.com</a> · <a href="https://t.me/ifmalex" class="underline">@ifmalex</a>
-      </p>
+  <main id="top">
+    <header class="hero">
+      <div class="container">
+        <span class="eyebrow">Design Director · CDO</span>
+        <h1>Проектирую системы, которые помогают продуктам расти.</h1>
+        <p class="hero-copy">Руковожу дизайном цифровых промышленных продуктов, развиваю команды и превращаю сложные процессы в понятные интерфейсы.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Смотреть проекты</a>
+          <a class="button button-secondary" href="https://t.me/ifmalex" target="_blank" rel="noreferrer">Telegram ↗</a>
+        </div>
+        <div class="metrics" aria-label="Ключевые результаты">
+          <div class="metric"><strong>35%</strong><span>сокращение времени на дизайн и разработку</span></div>
+          <div class="metric"><strong>40%</strong><span>ускорение запуска нового продукта</span></div>
+          <div class="metric"><strong>15+</strong><span>человек в управляемых командах</span></div>
+        </div>
+      </div>
     </header>
 
-    <!-- Опыт работы -->
-    <section id="experience" class="mb-10 scroll-mt-20">
-      <h2 class="text-2xl font-semibold mb-4">Опыт работы</h2>
-      <div class="mb-6">
-        <h3 class="text-xl font-semibold">ГК «Цифра» — Chief Design Officer (с 2022)</h3>
-        <ul class="list-disc list-inside mt-2 text-sm space-y-1">
-        <h3 class="text-xl font-semibold">🔹 КЛЮЧЕВЫЕ РЕЗУЛЬТАТЫ 🔹</h3>
-          <li> Выстроил процесс разработки пользовательских интерфейсов на всех стадиях работы над
-продуктом/проектом;</li>
-          <li>Сформировал принципы дизайн-менеджмента, которые помогли построить дизайн-культуру в компании;</li>
-          <li> Разработали фундамент для реализации модульного дизайна для масштабирования решений в дизайне; </li>
-          <li> Запустил дизайн-систему Prizm, которая стала лучшим проектом 2023 года в компании и стала лауреатом в 2024 году в номинации «Первооткрыватели года» на Промышленно-энергетическом форме TNF. 3+ года достигаем поставленных целей бизнеса вместе дизайн-командой; </li>
-          <li> Сформировал, запустил отделы дизайна и визуализации, центр дизайна и визуализации, закрыл потребности по дизайну бизнес-юнитах ГК; </li>
-          <li> Обеспечил партнёров обучающими курсами по дизайну на базе продуктов; </li>
-          <li> Сократили на 35% время на дизайн и разработку, на 40% ускорили запуск нового продукта; </li>
-          <li> Нашёл источники финансирования, доказал экономическую эффективность разработки и внедрения дизайн- системы. Сформировал команду разработки дизайн-системы и выстроил процесс работы. Создали и поддерживаем базы материалов, айдентики и компонентов, инсайтов. </li>
-          
- <h3 class="text-xl font-semibold">🔹 ОБЯЗАННОСТИ 🔹</h3>
-      <li> Разработка и развитие дизайн-стратегии компании; </li>
-      <li> Разработка, внедрение и развитие дизайн-системы в роли владельца продукта; </li>
-      <li> Развитие дизайн-процессов, внедрение и адаптация практик, направленных на улучшение бизнес-метрик; </li>
-      <li> Брендинг цифровых продуктов, дизайн-коммуникации бренда; </li>
-      <li> Супервайзинг и синхронизация дизайн-решений внутри ГК; </li>
-      <li> Управление задачами компании по проектированию интерфейсов продуктов и организации пользовательского взаимодействия; </li>
-      <li> Управление командой дизайнеров и арт-директоров. Подбор, онбординг, обучение сотрудников; </li>
-      <li> Развитие команды дизайнеров: мотивация, грейдирование, ИПР, наставничество, оценка и аттестация. </li>
-      <li> Презентация продуктов, процессов и т.д. </li>         
-
- <h3 class="text-xl font-semibold">🔹 КЛЮЧЕВЫЕ ПРОЕКТЫ И ПРОДУКТЫ ПРОЕКТЫ 🔹</h3>
-       <li> Индустриальная дизайн-система Prizm  </li>
-       <li>ZIIoT design system (1.0, 2.0, 3.0)  </li>
-       <li>Zyfra Industrial Internet Of Things Platform (ZIIoT)  </li>
-       <li>Zyfra Quality Lab  </li>
-       <li>Zyfra Industrial Automation Kit  </li>
-       <li>VG Work&Safety Management  </li>
-       <li>Единая цифровая платформа ПАО «Лукойл»  </li>
-       <li> Cистема качества для «Газпром нефть»  </li>
-       <li>Внедрение платформы ZIIoT в «Газпром нефть», НЛМ  </li>
-         </ul>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold">ООО «ИндаСофт» — Ведущий инженер-проектировщик UI (2008–2018)</h3>
-        <ul class="list-disc list-inside mt-2 text-sm space-y-1">
-          <li>Создание библиотеки компонентов и стандартов UI</li>
-          <li>UX-исследования и внедрение пользовательских интерфейсов</li>
-          <li>Обучение сотрудников и развитие внутренних курсов</li>
-        </ul>
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Избранное</div>
+          <div>
+            <h2>Ключевые проекты</h2>
+            <p class="lead">Дизайн-системы и цифровые платформы для промышленности — от стратегии и процессов до компонентов и запуска.</p>
+          </div>
+        </div>
+        <div class="case-grid">
+          <article class="case">
+            <span class="case-number">01 / Design system</span>
+            <div>
+              <h3>Prizm</h3>
+              <p>Индустриальная дизайн-система. Лучший проект компании в 2023 году и лауреат TNF 2024 в номинации «Первооткрыватели года».</p>
+              <div class="tag-row"><span class="tag">Product ownership</span><span class="tag">Design ops</span><span class="tag">UI platform</span></div>
+            </div>
+          </article>
+          <article class="case">
+            <span class="case-number">02 / Platform</span>
+            <div>
+              <h3>ZIIoT</h3>
+              <p>Развитие интерфейсов Zyfra Industrial Internet of Things Platform и дизайн-системы ZIIoT от версии 1.0 до 3.0.</p>
+              <div class="tag-row"><span class="tag">Industrial UX</span><span class="tag">HMI</span><span class="tag">Scale</span></div>
+            </div>
+          </article>
+          <article class="case">
+            <span class="case-number">03 / Enterprise</span>
+            <div>
+              <h3>Единая цифровая платформа</h3>
+              <p>Проектирование цифровой платформы ПАО «Лукойл» и решений для крупных промышленных компаний.</p>
+              <div class="tag-row"><span class="tag">Enterprise</span><span class="tag">UX strategy</span><span class="tag">Complex systems</span></div>
+            </div>
+          </article>
+          <article class="case">
+            <span class="case-number">04 / Product suite</span>
+            <div>
+              <h3>Industrial products</h3>
+              <p>Zyfra Quality Lab, Industrial Automation Kit и VG Work&amp;Safety Management.</p>
+              <div class="tag-row"><span class="tag">Product design</span><span class="tag">Research</span><span class="tag">Leadership</span></div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- Проекты -->
-    <section id="projects" class="mb-10 scroll-mt-20">
-      <h2 class="text-2xl font-semibold mb-4">Ключевые проекты</h2>
-      <ul class="list-disc list-inside text-sm space-y-1">
-        <li>Prizm — индустриальная дизайн-система</li>
-        <li>Zyfra Industrial Internet Of Things Platform (ZIIoT)</li>
-        <li>Цифровая платформа ПАО «Лукойл», системы для «Газпром нефть»</li>
-        <li>VG Work&Safety Management, Zyfra Quality Lab</li>
-      </ul>
+    <section id="experience">
+      <div class="container experience">
+        <div>
+          <div class="section-kicker">Опыт</div>
+          <h2>От интерфейсов к дизайн-культуре</h2>
+        </div>
+        <div>
+          <article class="role">
+            <div class="role-meta">2022 — настоящее время</div>
+            <h3>Chief Design Officer · ГК «Цифра»</h3>
+            <ul>
+              <li>Разработал дизайн-стратегию и выстроил процесс создания интерфейсов на всех стадиях продукта.</li>
+              <li>Сформировал отделы дизайна и визуализации, закрыл потребности бизнес-юнитов группы компаний.</li>
+              <li>Запустил дизайн-систему Prizm, сформировал команду и доказал экономическую эффективность её развития.</li>
+              <li>Внедрил практики дизайн-менеджмента, обучение, грейдирование и развитие сотрудников.</li>
+              <li>Синхронизировал дизайн-решения и коммуникации бренда внутри группы компаний.</li>
+            </ul>
+          </article>
+          <article class="role">
+            <div class="role-meta">2008 — 2018</div>
+            <h3>Ведущий инженер-проектировщик UI · «ИндаСофт»</h3>
+            <ul>
+              <li>Создавал библиотеки компонентов и стандарты пользовательских интерфейсов.</li>
+              <li>Проводил UX-исследования и внедрял интерфейсные решения.</li>
+              <li>Обучал сотрудников и развивал внутренние образовательные курсы.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Образование и курсы -->
-    <section id="education" class="mb-10 scroll-mt-20">
-      <h2 class="text-2xl font-semibold mb-4">Образование и курсы</h2>
-      <p class="text-sm mb-2">ИГХТУ (2011–2013) — Менеджмент организации</p>
-      <p class="text-sm mb-2">ИГХТУ (2005–2011) — Технология электрохимических производств</p>
-      <p class="text-sm">Британская высшая школа дизайна, Сколково, Universal University, Нетология и др.</p>
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Профиль</div>
+          <div><h2>Дизайн как управляемая система</h2></div>
+        </div>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Экспертиза</h3>
+            <p>Дизайн-стратегия, управление командами, дизайн-системы, промышленные HMI-интерфейсы, исследования, развитие процессов и продуктовый дизайн.</p>
+          </article>
+          <article class="panel">
+            <h3>Образование</h3>
+            <ul>
+              <li>ИГХТУ — менеджмент организации, 2011–2013</li>
+              <li>ИГХТУ — технология электрохимических производств, 2005–2011</li>
+              <li>БВШД, Сколково, Universal University, Нетология</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Вне работы</h3>
+            <p>Преподаю в ИвГПУ, участвую в беговых стартах и трейлраннингах. Интересуюсь дизайном, системами и золотистыми ретриверами.</p>
+          </article>
+          <article class="panel">
+            <h3>Контакты</h3>
+            <p><a href="mailto:ifmalex@gmail.com">ifmalex@gmail.com</a><br><a href="https://t.me/ifmalex" target="_blank" rel="noreferrer">@ifmalex</a><br><a href="tel:+79206788022">+7 920 678-80-22</a></p>
+          </article>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Навыки и интересы -->
-    <section id="skills" class="scroll-mt-20">
-      <h2 class="text-2xl font-semibold mb-4">Обо мне</h2>
-      <ul class="list-disc list-inside text-sm space-y-1">
-        <li>Опыт управления командами 15+ человек</li>
-        <li>Экспертиза в цифровых HMI-интерфейсах</li>
-        <li>Преподавание в ИвГПУ, участие в беговых стартах и трейлраннингах</li>
-        <li>Люблю дизайн, системы и золотистых ретриверов 🐶</li>
-      </ul>
-    </section>
-  </div>
+  <footer>
+    <div class="container">
+      <div class="footer-cta">
+        <h2>Обсудим сложный цифровой продукт.</h2>
+        <a class="button button-primary" href="mailto:ifmalex@gmail.com">Написать письмо</a>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:ifmalex@gmail.com">Email</a>
+        <a href="https://t.me/ifmalex" target="_blank" rel="noreferrer">Telegram ↗</a>
+      </div>
+      <div class="footer-note">© <span id="year"></span> Александр Марков</div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
