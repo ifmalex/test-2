@@ -195,9 +195,35 @@
       align-self: center;
       position: relative;
       z-index: 2;
+      isolation: isolate;
       transform: translate3d(var(--copy-x), var(--copy-y), 0);
       transition: transform .28s ease-out;
       will-change: transform;
+    }
+    .hero-copy::before,
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      left: 44%;
+      top: 50%;
+      z-index: -1;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-copy::before {
+      width: min(62vw, 760px);
+      border: 1px solid rgba(167,124,255,.2);
+      border-top-color: rgba(140,255,0,.32);
+      box-shadow: 0 0 50px rgba(130,76,255,.09), inset 0 0 48px rgba(130,76,255,.07);
+      animation: textOrbit 18s linear infinite;
+    }
+    .hero-copy::after {
+      left: 54%;
+      width: min(48vw, 600px);
+      border: 1px dashed rgba(167,124,255,.13);
+      border-right-color: rgba(140,255,0,.24);
+      animation: textOrbitReverse 24s linear infinite;
     }
     .kicker {
       color: var(--violet-light);
@@ -249,8 +275,14 @@
     .button-primary { background: var(--text); border-color: var(--text); color: #0a090d; }
 
     .hero-visual {
+      grid-column: 2;
+      grid-row: 2;
       position: relative;
-      min-height: 440px;
+      width: min(100%, 360px);
+      min-height: 320px;
+      margin-top: 12px;
+      align-self: start;
+      justify-self: end;
       display: grid;
       place-items: center;
       isolation: isolate;
@@ -261,7 +293,7 @@
     .hero-visual::before {
       content: "";
       position: absolute;
-      width: min(35vw, 500px);
+      width: min(28vw, 360px);
       aspect-ratio: 1;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(128,63,255,.58), rgba(64,26,145,.18) 48%, transparent 70%);
@@ -269,21 +301,8 @@
       z-index: -2;
       animation: glowBreath 5.5s ease-in-out infinite;
     }
-    .hero-visual::after {
-      content: "";
-      position: absolute;
-      width: min(39vw, 520px);
-      aspect-ratio: 1;
-      border: 1px solid rgba(167,124,255,.18);
-      border-top-color: rgba(140,255,0,.34);
-      border-radius: 50%;
-      transform: rotateX(68deg) rotateZ(0deg);
-      box-shadow: 0 0 42px rgba(130,76,255,.1), inset 0 0 38px rgba(130,76,255,.08);
-      animation: orbitRing 14s linear infinite;
-      z-index: -1;
-    }
     .prism {
-      width: min(38vw, 490px);
+      width: min(23vw, 300px);
       overflow: visible;
       filter: drop-shadow(0 0 38px rgba(128,67,255,.32));
       transform-origin: 50% 52%;
@@ -580,8 +599,8 @@
     .about-list li { padding-left: 18px; position: relative; }
     .about-list li::before { content: "·"; color: var(--violet-light); position: absolute; left: 0; }
 
-    footer { padding: 110px 0 32px; border-top: 1px solid var(--line); }
-    .footer-main { display: grid; grid-template-columns: 1.4fr .6fr; gap: 42px; align-items: end; }
+    footer { padding: 64px 0 32px; border-top: 1px solid var(--line); }
+    .footer-main { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
     .contact-list { display: grid; gap: 10px; justify-items: start; }
     .contact-list a, .contact-list span { color: var(--muted); text-decoration: none; }
     .contact-list a:hover { color: var(--text); }
@@ -607,7 +626,14 @@
       68% { transform: translate3d(-6px, -7px, 0) rotate(-.5deg) scale(.99); }
     }
     @keyframes glowBreath { 0%, 100% { opacity: .72; transform: scale(.92); } 50% { opacity: 1; transform: scale(1.08); } }
-    @keyframes orbitRing { to { transform: rotateX(68deg) rotateZ(360deg); } }
+    @keyframes textOrbit {
+      from { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(0deg); }
+      to { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(360deg); }
+    }
+    @keyframes textOrbitReverse {
+      from { transform: translate(-50%, -50%) rotateX(66deg) rotateZ(0deg); }
+      to { transform: translate(-50%, -50%) rotateX(66deg) rotateZ(-360deg); }
+    }
     @keyframes drawPrism { to { stroke-dashoffset: 0; } }
     @keyframes prismGlow { 0%, 100% { stroke-opacity: .72; } 50% { stroke-opacity: 1; } }
     @keyframes dashFlow { to { stroke-dashoffset: -240; } }
@@ -618,14 +644,13 @@
 
     @media (max-width: 920px) {
       .hero-grid { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; }
-      .hero-visual { min-height: 360px; }
-      .prism { width: min(74vw, 470px); }
+      .hero-visual { grid-column: 1; grid-row: 3; width: min(72vw, 390px); min-height: 320px; margin: 0 6% 0 0; }
+      .prism { width: min(58vw, 300px); }
       .portrait { grid-column: 1; grid-row: 3; margin: 0 12% 18px 0; }
       .section-head { grid-template-columns: 1fr; gap: 16px; }
       .role { grid-template-columns: .7fr 1.3fr; }
       .role ul { grid-column: 2; }
       .leadership-grid, .about-grid { grid-template-columns: 1fr; }
-      .footer-main { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
       .container { width: min(var(--max), calc(100% - 28px)); }
@@ -885,7 +910,7 @@
 
     <section class="section-rule" id="about">
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head section-head-wide reveal">
           <div class="section-index">07 · Обо мне</div>
           <div><h2>За пределами должности</h2></div>
         </div>
