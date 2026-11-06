@@ -239,6 +239,43 @@
     .hero-stat span { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
 
     section { padding: 120px 0; scroll-margin-top: 72px; }
+    .ambient-3d {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .ambient-3d > .container { position: relative; z-index: 1; }
+    .ambient-3d::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: .18;
+      filter: saturate(1.08) contrast(1.08);
+    }
+    #leadership::before {
+      width: min(54vw, 760px);
+      aspect-ratio: 2 / 3;
+      right: -12%;
+      top: -2%;
+      background-image: url("assets/industrial-stack.webp");
+      background-position: center;
+      -webkit-mask-image: linear-gradient(to left, #000 40%, transparent 96%);
+      mask-image: linear-gradient(to left, #000 40%, transparent 96%);
+    }
+    #cases::before {
+      width: min(88vw, 1180px);
+      aspect-ratio: 15 / 6.4;
+      left: -10%;
+      bottom: 3%;
+      background-image: url("assets/digital-twin.webp");
+      background-position: left bottom;
+      opacity: .14;
+      -webkit-mask-image: linear-gradient(to right, #000 30%, transparent 92%);
+      mask-image: linear-gradient(to right, #000 30%, transparent 92%);
+    }
     .section-rule { border-top: 1px solid var(--line); }
     .section-head {
       display: grid;
@@ -489,6 +526,18 @@
       .courses { grid-column: auto; }
       .course { grid-template-columns: 64px 1fr; }
       .footer-bottom { display: grid; }
+      #leadership::before {
+        width: 540px;
+        right: -330px;
+        top: 12%;
+        opacity: .12;
+      }
+      #cases::before {
+        width: 720px;
+        left: -400px;
+        bottom: 10%;
+        opacity: .1;
+      }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -618,7 +667,7 @@
       </div>
     </section>
 
-    <section class="section-rule" id="leadership">
+    <section class="section-rule ambient-3d" id="leadership">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-index">03 · Лидерство</div>
@@ -648,7 +697,7 @@
       </div>
     </section>
 
-    <section class="section-rule" id="cases">
+    <section class="section-rule ambient-3d" id="cases">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-index">04 · Проекты</div>
